@@ -11,7 +11,7 @@ class Help(commands.Cog):
     @commands.group()
     async def help(self, ctx) -> None:
         if ctx.invoked_subcommand is None:
-            description = "`[p]help staff`: Commande staff\n`[p]help fun`\n`[p]help musique`\n`[p]help owner` : Commande Owner bot Yuukineko, Kaak, Pacman_fan"
+            description = "`[p]help staff`: Commande staff\n`[p]help fun`\n`[p]help musique`\n`[p]help owner` : Commande Owner bot Yuukineko, Kaak, Pacman_fan\n`[p]github` : Si vous voulez voir le code source du bot"
 
             embed = Embed(title="Help", description=description, colour=ctx.author.colour)
             await ctx.send(embed=embed)
