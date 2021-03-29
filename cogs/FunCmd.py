@@ -73,10 +73,6 @@ class FunCmd(commands.Cog):
 	async def dark_shark_flood_warnings(self, ctx):
 		await ctx.send("https://cdn.discordapp.com/attachments/815076683283038238/819360535421124628/IMG_20210310_203723.jpg")
 
-	#@commands.command(name="exta")
-	#async def exta_c_ta_daronne(self, ctx):
-		#await ctx.send("https://cdn.discordapp.com/attachments/815076683283038238/822915214298185778/IMG_20210317_222412.jpg")
-
 	@commands.command(name="prayLoS")
 	async def go_los(self, ctx):
 		await ctx.send("https://media.discordapp.net/attachments/698556826400194681/823586668061392916/LOSSUPPORT.png?width=381&height=472")
