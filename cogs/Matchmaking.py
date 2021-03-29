@@ -9,6 +9,12 @@ class matchmaking(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    def get_member_role(self, ctx):
+        roles = ctx.guild.roles
+        for role in roles:
+            if role.id == 824420443687223327:
+                return role
+
     @commands.command(name="matchmaking")
     async def matchmaking(self, ctx, user: discord.User):
         #Variable
@@ -21,7 +27,7 @@ class matchmaking(commands.Cog):
         #Set permission
         await quickplay_channel.set_permissions(ctx.author, send_messages=True, read_messages=True)
         await quickplay_channel.set_permissions(user, send_messages=True, read_messages=True)
-        await quickplay_channel.set_permissions(ctx.guild.default_role, send_messages=False, read_messages=False)
+        await quickplay_channel.set_permissions(self.get_member_role(ctx), send_messages=False, read_messages=False)
 
         #Labagar
         await quickplay_channel.send(f"{ctx.author.mention} Vs {user.mention}\nLABAGAR")
@@ -39,7 +45,7 @@ class matchmaking(commands.Cog):
         #Set Permissions
         await quickplay_channel.set_permissions(user_one, send_messages=True, read_messages=True)
         await quickplay_channel.set_permissions(user_two, send_messages=True, read_messages=True)
-        await quickplay_channel.set_permissions(ctx.guild.default_role, send_messages=False, read_messages=False)
+        await quickplay_channel.set_permissions(self.get_member_role(ctx), send_messages=False, read_messages=False)
 
         #Labagar
         await quickplay_channel.send(f"{user_one.mention} Vs {user_two.mention}\nLABAGAR")
