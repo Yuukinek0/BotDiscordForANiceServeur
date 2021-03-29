@@ -76,7 +76,11 @@ class FunCmd(commands.Cog):
 	@commands.command(name="prayLoS")
 	async def go_los(self, ctx):
 		await ctx.send("https://media.discordapp.net/attachments/698556826400194681/823586668061392916/LOSSUPPORT.png?width=381&height=472")
-
+		
+	@commands.command(name="github")
+	async def go_to_the_github(self, ctx):
+		await ctx.send("https://github.com/Yuukinek0/BotDiscordForANiceServeur")
+	
 	@commands.command(name="oof")
 	async def oof_reaction(self, ctx):
 		emoji_one = "🇴"
