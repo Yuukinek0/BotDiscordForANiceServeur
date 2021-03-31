@@ -7,6 +7,9 @@ prefix = "!"
 
 bot = commands.Bot(command_prefix=prefix, help_command=None)
 
+load = []
+unload = []
+
 @bot.event
 async def on_ready():
     print("Pac bot est prêt !")
@@ -31,39 +34,55 @@ async def shutdown(ctx):
 @commands.check(bot_owner)
 async def loadcog(ctx, extension):
     bot.load_extension(f'cogs.{extension}')
+    unload.remove(f"{extension}.py")
+    load.append(f"{extension}.py")
+
     await ctx.message.add_reaction("✅")
 
 @bot.command(name="unload")
 @commands.check(bot_owner)
 async def unloadcog(ctx, extension):
     bot.unload_extension(f'cogs.{extension}')
+    load.remove(f"{extension}.py")
+    unload.append(f"{extension}.py")
+
     await ctx.message.add_reaction("✅")
 
 @bot.command(name="reload")
 @commands.check(bot_owner)
 async def reloadcog(ctx, extension):
     bot.unload_extension(f'cogs.{extension}')
+    load.remove(f"{extension}.py")
+    unload.append(f"{extension}.py")
+
     bot.load_extension(f'cogs.{extension}')
+    unload.remove(f"{extension}.py")
+    load.append(f"{extension}.py")
+
     await ctx.message.add_reaction("✅")
 
 for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
         bot.load_extension(f'cogs.{filename[:-3]}')
+        load.append(filename)
 
 @bot.command(name="coglist")
 @commands.check(bot_owner)
 async def list_cog(ctx):
-    list_cogs_bot = []
-    embed = Embed(title="List des cogs", colour=ctx.author.colour)
+    embed_load = Embed(colour=discord.Colour.green())
+    embed_unload = Embed(colour=discord.Colour.red())
 
-    for filename in os.listdir('./cogs'):
-        if filename.endswith('.py'):
-            list_cogs_bot.append(filename)
+    load_sans_py = [s.replace(".py", "") for s in load]
+    load_sans_py.sort()
+    
+    unload_sans_py = [s.replace(".py", "") for s in unload]
+    unload_sans_py.sort()
 
-    sans_py = [s.replace(".py", "") for s in list_cogs_bot]
+    embed_load.add_field(name="Chargé", value=", ".join(load_sans_py), inline=False)
+    embed_unload.add_field(name="Déchargé", value=", ".join(unload_sans_py), inline=False)
 
+    await ctx.send(embed=embed_load)
+    await ctx.send(embed=embed_unload)
 
-    embed.add_field(name="liste des cog", value=", ".join(sans_py), inline=False)
-    await ctx.send(embed=embed)
 
 bot.run("TOKEN")
