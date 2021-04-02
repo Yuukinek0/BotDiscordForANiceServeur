@@ -72,7 +72,7 @@ class Help(commands.Cog):
     #Fun cmd
     @help_fun.command(name="cmd")
     async def help_fun_cmd(self, ctx):
-        description = "`[p]tk [p]johns [p]cafe [p]ptdrtki [p]wallah`\n`[p]bigflo [p]allah [p]rng [p]weeb [p]kaak`\n`[p]daisuke [p]paak [p]yume [p]paa [p]quenini`\n`[p]darkshark [p]callthepolice`\n`[p]randomssbu` : Prends un personnage de Super Smash Bros. Ultimate au hasard\n`[p]flip` : Pile ou Face\n`[p]oof` : oof un message"
+        description = "`[p]tk [p]johns [p]cafe [p]ptdrtki [p]wallah`\n`[p]bigflo [p]allah [p]rng [p]weeb [p]kaak`\n`[p]daisuke [p]paak [p]yume [p]paa [p]quenini`\n`[p]darkshark [p]callthepolice`\n`[p]randomssbu` : Prends un personnage de Super Smash Bros. Ultimate au hasard\n`[p]randomssbm` : Prends un personnage de Super Smash Bros. Melee au hasard\n`[p]flip` : Pile ou Face\n`[p]oof` : oof un message\n`[p]quiaimetu <user_one> <user_two>` : Le bot choisi qui il préfère entre 2 utilisateur"
         embed = Embed(title="Fun Command Help", description=description, colour=ctx.author.colour)
         await ctx.send(embed=embed)
 
