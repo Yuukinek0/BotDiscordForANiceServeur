@@ -73,6 +73,10 @@ class FunCmd(commands.Cog):
 	async def dark_shark_flood_warnings(self, ctx):
 		await ctx.send("https://cdn.discordapp.com/attachments/815076683283038238/819360535421124628/IMG_20210310_203723.jpg")
 
+	@commands.command(name="oro")
+	async def oro_tg(self, ctx):
+		await ctx.send("https://cdn.discordapp.com/attachments/815076683283038238/839493021728374814/IMG_20210505_151328.png")
+	
 	@commands.command(name="prayLoS")
 	async def go_los(self, ctx):
 		await ctx.send("https://media.discordapp.net/attachments/698556826400194681/823586668061392916/LOSSUPPORT.png?width=381&height=472")
