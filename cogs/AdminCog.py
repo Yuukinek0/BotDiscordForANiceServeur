@@ -1,5 +1,6 @@
 import discord
 
+from discord.utils import get
 from discord import Embed
 from discord.ext import commands
 
@@ -27,18 +28,18 @@ class AdminCog(commands.Cog):
 
     @commands.command(name="mute")
     @commands.has_permissions(administrator=True)
-    async def mute_member(self, ctx, user: discord.User, *, reason):
+    async def mute_member(self, ctx, user: discord.Member):
         mute_role = await self.getMutedRole(ctx)
 
-        await user.add_roles(mute_role, reason=reason)
+        await user.add_roles(mute_role)
         await ctx.message.add_reaction("✅")
 
     @commands.command(name="unmute")
     @commands.has_permissions(administrator=True)
-    async def unmute_user(self, ctx, user: discord, *, reason):
+    async def unmute_user(self, ctx, user: discord.Member):
         mute_role = await self.getMutedRole(ctx)
 
-        await user.remove_roles(mute_role, reason=reason)
+        await user.remove_roles(mute_role)
         await ctx.message.add_reaction("✅")
 
     @commands.command(name="ban")
@@ -77,6 +78,17 @@ class AdminCog(commands.Cog):
         messages = await ctx.channel.history(limit=nombre + 1).flatten()
         for message in messages:
             await message.delete()
+
+        await ctx.message.add_reaction("✅")
+
+    @commands.command(name="giveAllRole")
+    @commands.has_permissions(administrator=True)
+    async def give_role_for_all_member(self, ctx, role: discord.Role):
+        this_server = self.bot.get_all_members()
+        for members in this_server:
+            await members.add_roles(role)
+
+        await ctx.message.add_reaction("✅")
 
     @mute_member.error
     async def mute_error(self, ctx, error):
