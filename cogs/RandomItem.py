@@ -15,7 +15,7 @@ ssbu_character_list = [
     "Squirtle", "Ivysaur", "Charizard", "Diddy Kong",
     "Lucas", "Sonic", "King Dedede", "Olimar",
     "Lucario", "R.O.B", "Toon Link", "Wolf",
-    "Villager", "Mega Man", "Wii Fit Trainer", "Rosaline and Luma",
+    "Villager", "Mega Man", "Wii Fit Trainer", "Rosalina and Luma",
     "Little Mac", "Greninja", "Mii Brawler", "Mii Swordfighter",
     "Mii Gunner", "Palutena", "Pac-Man", "Robin",
     "Shulk", "Bowser Jr.", "Duck Hunt", "Ryu",
@@ -24,7 +24,7 @@ ssbu_character_list = [
     "King K.Rool", "Isabelle", "Incineroar", "Piranha Plant",
     "Joker", "Hero", "Banjo & Kazooie", "Terry",
     "Byleth", "Min Min", "Steve", "Sephiroth", "Pyra",
-    "Myhtra"
+    "Mythra", "Kazuya"
 ]
 
 ssbm_character_list = [
@@ -56,6 +56,30 @@ class Random_Character_SSBU(commands.Cog):
             await ctx.send(f"Je préfère {user_one.display_name}")
         if idk in user_deux:
             await ctx.send(f"Je préfère {user_two.display_name}")
+    
+    @commands.command(name="soutiens")
+    async def soutien_a_user(self, ctx):
+        soutiens_sentence = [
+            "Tu es génial",
+            "Courage tu vas y arriver",
+            "Tu es incroyable",
+            f"Tu es beau/belle {ctx.author.display_name}",
+            "Même quand c’est dur et que cela représente un vrai défi, tu peux puiser dans tes ressources pour y arriver, à ton rythme",
+            "Tu es capable de réaliser bien plus que ce que tu crois.",
+            "Cela prend du temps pour que le potentiel fleurisse. Tu n’as pas besoin d’être parfait tout de suite.",
+            "Un échec ou une erreur ne signifie pas être nul.",
+            "Une action (j’ai échoué) n’est pas une identité (je suis nul(le)).",
+            "Ton humanité compte plus que tes erreurs.",
+            "Tu ne rates pas et tu n ‘es pas un raté, tu oses essayer.",
+            "Combien de temps as-tu mis pour apprendre à marcher ? Es-tu tombé ? Es-tu resté par terre ou as-tu recommencé ?",
+            "La joie n’est pas l’inverse du sérieux : tu as le droit de t’éclater dans ce que tu fais.",
+            "Que dirais-tu à un ami qui aurait autant peur/ qui se sent aussi découragé que toi, qui douterait de lui ? Dis-toi ces phrases à toi-même.",
+            "Tu en es capable : peut-être pas aujourd’hui ni demain, peut-être pas de la manière dont tu penses le faire aujourd’hui.",
+            "Tu n’as pas en train d’échouer, tu es en train d’apprendre.",
+            "Quelle est la pire chose qui pourrait arriver si tu essayes ? Quelles sont les preuves qui te laissent penser que le pire arrivera ? Es-tu absolument sûr que c’est vrai ? Trouve au moins trois idées pour que cela n’arrive pas.",
+
+        ]
+        await ctx.send(random.choice(soutiens_sentence))
 
 def setup(bot):
     bot.add_cog(Random_Character_SSBU(bot))
