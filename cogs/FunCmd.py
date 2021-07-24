@@ -73,10 +73,6 @@ class FunCmd(commands.Cog):
 	async def dark_shark_flood_warnings(self, ctx):
 		await ctx.send("https://cdn.discordapp.com/attachments/815076683283038238/819360535421124628/IMG_20210310_203723.jpg")
 
-	@commands.command(name="oro")
-	async def oro_tg(self, ctx):
-		await ctx.send("https://cdn.discordapp.com/attachments/815076683283038238/839493021728374814/IMG_20210505_151328.png")
-	
 	@commands.command(name="prayLoS")
 	async def go_los(self, ctx):
 		await ctx.send("https://media.discordapp.net/attachments/698556826400194681/823586668061392916/LOSSUPPORT.png?width=381&height=472")
@@ -84,6 +80,39 @@ class FunCmd(commands.Cog):
 	@commands.command(name="callthepolice")
 	async def fun_call_police(self, ctx):
 		await ctx.send("https://cdn.discordapp.com/attachments/815076683283038238/826934303853248522/sdfsdfsdfsdfsdfetyuijhgfbdsfgd.png")
+
+	@commands.command(name="nigga")
+	async def lowrd_nigga(self, ctx):
+		await ctx.send("https://cdn.discordapp.com/attachments/815076683283038238/864235424887865354/asasasasasasas.png")
+
+	@commands.command(name="jmassoie")
+	async def je_m_assoie(self, ctx):
+		await ctx.send("https://cdn.discordapp.com/attachments/815076683283038238/864252022723575818/20210601_131441-1.jpg")
+
+	@commands.command(name="nixx")
+	async def nixx_lol(self, ctx):
+		nixx_sentence = [
+			"ton perso est débile",
+			"full rng",
+			"les top tier c est du TRAVAIL",
+			"ptdr le nul",
+			"t es éclaté",
+			"tu sais que c est grave d être nul comme ça",
+			"fdp va"
+		]
+		await ctx.send(random.choice(nixx_sentence))
+
+	@commands.command(name="chadkirb")
+	async def chad_kirby(self, ctx):
+		await ctx.send("<:KirbyPlayLeChad:855606995263815680>")
+
+	@commands.command(name="alundra")
+	async def sniffe_vo_femme(self, ctx):
+		await ctx.send("sniffé vos femme")
+
+	@commands.command(name="zarc")
+	async def zarc_et_c_loli(self, ctx):
+		await ctx.send("https://cdn.discordapp.com/attachments/815076683283038238/866094400055934976/PicsArt_06-20-11.44.58.jpg")
 
 	@commands.command(name="oof")
 	async def oof_reaction(self, ctx):
@@ -110,6 +139,11 @@ class FunCmd(commands.Cog):
 			await ctx.send("*Lance une pièce et... PILE !*")
 		if idk in face_numbers:
 			await ctx.send("*Lance une pièce et... FACE !*")
+
+	@commands.command(name="emoji")
+	async def get_custom_emoji(self, ctx, emoji : discord.Emoji):
+		emoji_url = emoji.url
+		await ctx.send(emoji_url)
 
 def setup(bot):
 	bot.add_cog(FunCmd(bot))
